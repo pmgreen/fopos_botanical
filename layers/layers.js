@@ -1,5 +1,5 @@
 ol.proj.proj4.register(proj4);
-//ol.proj.get("EPSG:3857").setExtent([-8313320.047856, 4918576.992016, -8312658.625482, 4919021.923325]);
+//ol.proj.get("EPSG:3857").setExtent([-8313142.567046, 4918343.598931, -8312283.527650, 4918895.046801]);
 var wms_layers = [];
 
 
@@ -29,62 +29,76 @@ var lyr_riparian_east_1 = new ol.layer.Vector({
                 interactive: true,
                 title: '<img src="styles/legend/riparian_east_1.png" /> riparian_east'
             });
-var format_Exclosures_2 = new ol.format.GeoJSON();
-var features_Exclosures_2 = format_Exclosures_2.readFeatures(json_Exclosures_2, 
+var format_Transects_2 = new ol.format.GeoJSON();
+var features_Transects_2 = format_Transects_2.readFeatures(json_Transects_2, 
             {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
-var jsonSource_Exclosures_2 = new ol.source.Vector({
+var jsonSource_Transects_2 = new ol.source.Vector({
     attributions: ' ',
 });
-jsonSource_Exclosures_2.addFeatures(features_Exclosures_2);
-var lyr_Exclosures_2 = new ol.layer.Vector({
+jsonSource_Transects_2.addFeatures(features_Transects_2);
+var lyr_Transects_2 = new ol.layer.Vector({
                 declutter: false,
-                source:jsonSource_Exclosures_2, 
-                style: style_Exclosures_2,
-                popuplayertitle: 'Exclosures',
+                source:jsonSource_Transects_2, 
+                style: style_Transects_2,
+                popuplayertitle: 'Transects',
                 interactive: false,
-                title: '<img src="styles/legend/Exclosures_2.png" /> Exclosures'
+                title: '<img src="styles/legend/Transects_2.png" /> Transects'
             });
-var format_Subplots_3 = new ol.format.GeoJSON();
-var features_Subplots_3 = format_Subplots_3.readFeatures(json_Subplots_3, 
-            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
-var jsonSource_Subplots_3 = new ol.source.Vector({
-    attributions: ' ',
-});
-jsonSource_Subplots_3.addFeatures(features_Subplots_3);
-var lyr_Subplots_3 = new ol.layer.Vector({
-                declutter: false,
-                source:jsonSource_Subplots_3, 
-                style: style_Subplots_3,
-                popuplayertitle: 'Subplots',
-                interactive: false,
-                title: '<img src="styles/legend/Subplots_3.png" /> Subplots'
-            });
-var lyr_fopos_invasive_4 = new ol.layer.Image({
+var lyr_introduced_3 = new ol.layer.Image({
         opacity: 1,
         
-    title: 'fopos_invasive<br />' ,
+    title: 'introduced<br />' ,
         
         
         source: new ol.source.ImageStatic({
-            url: "./layers/fopos_invasive_4.png",
+            url: "./layers/introduced_3.png",
             attributions: ' ',
             projection: 'EPSG:3857',
             alwaysInRange: true,
-            imageExtent: [-8313235.970087, 4918294.162872, -8312267.615327, 4918978.858157]
+            imageExtent: [-8313092.477954, 4918420.779966, -8312466.117974, 4918833.740557]
         })
     });
+var lyr_natives_4 = new ol.layer.Image({
+        opacity: 1,
+        
+    title: 'natives<br />' ,
+        
+        
+        source: new ol.source.ImageStatic({
+            url: "./layers/natives_4.png",
+            attributions: ' ',
+            projection: 'EPSG:3857',
+            alwaysInRange: true,
+            imageExtent: [-8313114.975424, 4918552.650731, -8312659.707287, 4918852.810072]
+        })
+    });
+var lyr_invasives_5 = new ol.layer.Image({
+        opacity: 1,
+        
+    title: 'invasives<br />' ,
+        
+        
+        source: new ol.source.ImageStatic({
+            url: "./layers/invasives_5.png",
+            attributions: ' ',
+            projection: 'EPSG:3857',
+            alwaysInRange: true,
+            imageExtent: [-8313114.975424, 4918552.650731, -8312659.707287, 4918852.810072]
+        })
+    });
+var group_status = new ol.layer.Group({
+                                layers: [lyr_introduced_3,lyr_natives_4,lyr_invasives_5,],
+                                fold: 'open',
+                                title: 'status'});
 
-lyr_OSMStandard_0.setVisible(true);lyr_riparian_east_1.setVisible(true);lyr_Exclosures_2.setVisible(true);lyr_Subplots_3.setVisible(true);lyr_fopos_invasive_4.setVisible(true);
-var layersList = [lyr_OSMStandard_0,lyr_riparian_east_1,lyr_Exclosures_2,lyr_Subplots_3,lyr_fopos_invasive_4];
+lyr_OSMStandard_0.setVisible(true);lyr_riparian_east_1.setVisible(true);lyr_Transects_2.setVisible(true);lyr_introduced_3.setVisible(true);lyr_natives_4.setVisible(true);lyr_invasives_5.setVisible(true);
+var layersList = [lyr_OSMStandard_0,lyr_riparian_east_1,lyr_Transects_2,group_status];
 lyr_riparian_east_1.set('fieldAliases', {'fid': 'fid', 'id': 'id', });
-lyr_Exclosures_2.set('fieldAliases', {'fid': 'fid', 'id': 'id', 'name': 'name', 'description': 'description', 'changed': 'changed', 'pictureFolder': 'pictureFolder', 'pictureName': 'pictureName', 'picturePath': 'picturePath', 'created': 'created', 'perimeter': 'perimeter', 'perimeterUnit': 'perimeterUnit', 'area': 'area', 'areaUnit': 'areaUnit', 'numberOfPoints': 'numberOfPoints', });
-lyr_Subplots_3.set('fieldAliases', {'fid': 'fid', 'subplot_uuid': 'subplot_uuid', 'transect': 'transect', 'subplot': 'subplot', 'status': 'status', });
+lyr_Transects_2.set('fieldAliases', {'fid': 'fid', 'name': 'name', 'code': 'code', });
 lyr_riparian_east_1.set('fieldImages', {'fid': 'TextEdit', 'id': 'TextEdit', });
-lyr_Exclosures_2.set('fieldImages', {'fid': 'TextEdit', 'id': 'TextEdit', 'name': 'TextEdit', 'description': 'TextEdit', 'changed': 'TextEdit', 'pictureFolder': 'TextEdit', 'pictureName': 'TextEdit', 'picturePath': 'TextEdit', 'created': 'TextEdit', 'perimeter': 'TextEdit', 'perimeterUnit': 'TextEdit', 'area': 'TextEdit', 'areaUnit': 'TextEdit', 'numberOfPoints': 'TextEdit', });
-lyr_Subplots_3.set('fieldImages', {'fid': 'TextEdit', 'subplot_uuid': 'TextEdit', 'transect': 'TextEdit', 'subplot': 'Range', 'status': 'ValueRelation', });
+lyr_Transects_2.set('fieldImages', {'fid': 'TextEdit', 'name': 'TextEdit', 'code': 'TextEdit', });
 lyr_riparian_east_1.set('fieldLabels', {'fid': 'no label', 'id': 'no label', });
-lyr_Exclosures_2.set('fieldLabels', {'fid': 'no label', 'id': 'no label', 'name': 'no label', 'description': 'no label', 'changed': 'no label', 'pictureFolder': 'no label', 'pictureName': 'no label', 'picturePath': 'no label', 'created': 'no label', 'perimeter': 'no label', 'perimeterUnit': 'no label', 'area': 'no label', 'areaUnit': 'no label', 'numberOfPoints': 'no label', });
-lyr_Subplots_3.set('fieldLabels', {'fid': 'no label', 'subplot_uuid': 'no label', 'transect': 'no label', 'subplot': 'no label', 'status': 'no label', });
-lyr_Subplots_3.on('precompose', function(evt) {
+lyr_Transects_2.set('fieldLabels', {'fid': 'no label', 'name': 'no label', 'code': 'no label', });
+lyr_Transects_2.on('precompose', function(evt) {
     evt.context.globalCompositeOperation = 'normal';
 });

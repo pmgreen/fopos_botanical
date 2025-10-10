@@ -1,7 +1,7 @@
 var size = 0;
 var placement = 'point';
 
-var style_Subplots_3 = function(feature, resolution){
+var style_Transects_2 = function(feature, resolution){
     var context = {
         feature: feature,
         variables: {}
@@ -16,12 +16,12 @@ var style_Subplots_3 = function(feature, resolution){
     var textAlign = "left";
     var offsetX = 0;
     var offsetY = 0;
-    var placement = 'point';
-    if (feature.get("subplot") !== null) {
-        labelText = String(feature.get("subplot"));
+    var placement = 'line';
+    if ("" !== null) {
+        labelText = String("");
     }
     var style = [ new ol.style.Style({
-        stroke: new ol.style.Stroke({color: 'rgba(114,114,114,0.6235294117647059)', lineDash: null, lineCap: 'butt', lineJoin: 'miter', width: 0.988}),fill: new ol.style.Fill({color: 'rgba(190,207,80,1.0)'}),
+        stroke: new ol.style.Stroke({color: 'rgba(150,70,4,1.0)', lineDash: [1.748,3.496], lineCap: 'square', lineJoin: 'bevel', width: 1.748}),
         text: createTextStyle(feature, resolution, labelText, labelFont,
                               labelFill, placement, bufferColor,
                               bufferWidth)

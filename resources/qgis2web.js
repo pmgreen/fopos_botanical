@@ -6,13 +6,13 @@ var map = new ol.Map({
     view: new ol.View({
          maxZoom: 28, minZoom: 1, projection: new ol.proj.Projection({
             code: 'EPSG:3857',
-            //extent: [-8313293.734415, 4918269.569939, -8312669.153755, 4918837.414835],
+            //extent: [-8312983.035534, 4918447.321664, -8312669.153755, 4918837.414835],
             units: 'm'})
     })
 });
 
 //initial view - epsg:3857 coordinates if not "Match project CRS"
-map.getView().fit([-8313320.047856, 4918576.992016, -8312658.625482, 4919021.923325], map.getSize());
+map.getView().fit([-8313142.567046, 4918343.598931, -8312283.527650, 4918895.046801], map.getSize());
 
 ////small screen definition
     var hasTouchScreen = map.getViewport().classList.contains('ol-touch');
@@ -452,7 +452,7 @@ var Title = new ol.control.Control({
     element: (() => {
         var titleElement = document.createElement('div');
         titleElement.className = 'top-left-title ol-control';
-        titleElement.innerHTML = '<h2 class="project-title">FOPOS Riparian East Botanical: Baseline Survey (2024)</h2>';
+        titleElement.innerHTML = '<h2 class="project-title">FOPOS 2024 Botanical Survey</h2>';
         return titleElement;
     })(),
     target: 'top-left-container'
@@ -469,7 +469,7 @@ var Abstract = new ol.control.Control({
 
         var linkElement = document.createElement('a');
 
-        if (125 > 240) {
+        if (174 > 240) {
             linkElement.setAttribute("onmouseenter", "showAbstract()");
             linkElement.setAttribute("onmouseleave", "hideAbstract()");
             linkElement.innerHTML = 'i';
@@ -483,13 +483,13 @@ var Abstract = new ol.control.Control({
             window.showAbstract = function() {
                 linkElement.classList.remove("project-abstract");
                 linkElement.classList.add("project-abstract-uncollapsed");
-                linkElement.innerHTML = 'Webmap as a presentation tool to help viisualize the distribution of native vs. invasive plants as a proof-of-concept/sample.';
+                linkElement.innerHTML = 'Web map viisualizing the relative distribution of surveyed plant species by status (invasive, native, introduced). See the menu (top right corner) to turn layers off and on. ';
             }
 
             hideAbstract();
         } else {
             linkElement.classList.add("project-abstract-uncollapsed");
-            linkElement.innerHTML = 'Webmap as a presentation tool to help viisualize the distribution of native vs. invasive plants as a proof-of-concept/sample.';
+            linkElement.innerHTML = 'Web map viisualizing the relative distribution of surveyed plant species by status (invasive, native, introduced). See the menu (top right corner) to turn layers off and on. ';
         }
 
         titleElement.appendChild(linkElement);
