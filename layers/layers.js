@@ -1,5 +1,5 @@
 ol.proj.proj4.register(proj4);
-//ol.proj.get("EPSG:3857").setExtent([-8313142.567046, 4918343.598931, -8312283.527650, 4918895.046801]);
+//ol.proj.get("EPSG:3857").setExtent([-8313188.982884, 4918383.779806, -8312329.943488, 4918935.227676]);
 var wms_layers = [];
 
 
@@ -10,7 +10,7 @@ var wms_layers = [];
             
             
             source: new ol.source.XYZ({
-            attributions: ' &nbsp &middot; <a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors, CC-BY-SA</a>',
+            attributions: '&nbsp;&middot; <a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors, CC-BY-SA</a>',
                 url: 'http://tile.openstreetmap.org/{z}/{x}/{y}.png'
             })
         });
